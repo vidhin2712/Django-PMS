@@ -1,0 +1,39 @@
+
+{% extends '../base.html' %}
+{% load static %}
+{% block navbar %}
+    {% include "../navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}   
+        <div class="content-page">
+      <div class="container ">
+         <div class="row">            
+            <div class="d-flex" style="margin: 0 0 0 10rem;">
+               <div class="col-lg" style="width: fit-content;">
+                  <div class="card w-100" style="box-shadow: 1px 1px 1px 1px;">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Gantt Chart</h4>
+                        </div>
+                     </div>
+                     <div class="card-body" style="width: 50rem;">
+                        <div id="advanced-chart"></div>
+                     </div>
+                  </div>
+               </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+    </div>
+    <!-- Wrapper End-->
+
+  
+    {% endblock content %}
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

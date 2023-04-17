@@ -1,0 +1,46 @@
+{% extends '../base.html' %}
+
+
+{% block navbar %}
+    {% include "../navbar.html" %}
+{% endblock navbar %}
+
+ {% block content %} 
+ <div class="container h5" style="margin-top: 5rem;  background: url(/static/assets/images/cool-background3.png); background-size: cover; border-radius : 50px">
+    <div class="row d-flex justify-content-center align-items-center h-100 ">
+      <div class="col-lg-13 col-xl-10">
+        <div class="card text-black" style="border-radius: 50px; margin: 30px; background: rgba(40,184,133,0.5);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(40,184,133,0.25);">
+          <div class="card-body p-md-5">
+            <div  class="row" style="margin-left: 2rem ; margin-top: 1rem;">
+                    <table style=" justify-content: center; width: 100%; margin: 10px; color: black; border-color: black;">
+                           
+                        <table class="table mr-2" >
+                            <tr>
+                                <td class="text-center" style="font-size: xx-large; padding: 20px 0 50px; width: 20rem;" colspan="4">{{team.project}} Team Details</td>
+                            </tr>
+                        
+                        {% for i in team  %}
+                        
+                                    <tr>
+                                        <td style="color: black; padding: 20px 40px;"> {{i.user}} </td>
+                                        <td style="color: black; padding: 20px 90px;"> {{i.user.email}} </td>
+                                        <td> <a href="{% url 'teamdelete' i.id %}"><input type="button" class="btn btn-sm btn-danger" value="Delete"></a> </td>
+                                    </tr>
+                            {% endfor %}
+                    </table>
+                    <button class="btn btn-"><a href="{% url 'teamregister'  %}" style="color:black">Add Developer</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+                
+ {% endblock content %}  
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

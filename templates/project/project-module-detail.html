@@ -1,0 +1,141 @@
+{% extends '../base.html' %}
+
+
+{% block navbar %}
+    {% include "../navbar.html" %}
+{% endblock navbar %}
+
+ {% block content %} 
+ <div class="container h5" style="margin-top: 5rem;  background: url(/static/assets/images/unsplash1.jpg); background-size: cover; border-radius : 50px">
+    <div class="row d-flex justify-content-center align-items-center h-100 ">
+      <div class="col-lg-13 col-xl-10">
+        <div class="card text-black" style="border-radius: 50px; margin: 30px; background: rgba(40,184,133,0.5);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(40,184,133,0.25);">
+          <div class="card-body p-md-5">
+            <div  class="row" style="margin-left: 2rem ; margin-top: 1rem;">
+                    <table style=" justify-content: center; width: 100%; margin: 10px; color: black; border-color: black;">
+                        <tr>
+                            <td class="text-center" style="font-size: xx-large; padding: 20px 0 50px;" colspan="4">Project Module Details</td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Title </td>
+                            <td > : {{project.project.title}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Module Name </td>
+                            <td> : {{project.moduleName}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Description </td>
+                            <td> : {{project.description}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Estimated Hours </td>
+                            <td> : {{project.estimatedHours}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Starting Date </td>
+                            <td> : {{project.startDate}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Status</td>
+                            <td> : {{project.status}} </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp</td>
+                        </tr>
+                        <tr rowspan=2>
+                            <td style=" padding: 10px;">
+                                <a href="{% url 'projectmoduleupdate' project.id %}"><input type="button" class="btn btn-lg btn-dark" style="margin: 10px;" value="Edit"></a>
+                                <a href="{% url 'projectmoduledelete' project.id %}"><input type="button" class="btn btn-lg btn-danger" value="Delete"></a> 
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12  col-xl-10" style="background-color: transparent;">
+        <div class=" text-black" style="margin: 30px; background: rgba(40,184,133,0);">
+          <div class="card-body p-md-5">
+            <div class="card-header bg-transparent text-center">
+                <div style="display: inline-block; color: white; font-size: 45px ;">Task Details</div>
+                    <div style="display: inline-block; position: absolute; right: 15%;">
+                     <a href="{% url 'taskcreate' %}"><button class="btn btn-dark" style="background-color: green;">Add task</button></a> 
+                    </div>
+            </div>
+            
+            <div  class="row" style="margin-left: 2rem ; margin-top: 2rem; margin-left: -2rem; ">
+                
+
+                {% for i in task  %}
+                
+                <div class="col-lg-5" id="card" style="padding-top: 10px;">
+                    <table  style=" width: 100%; margin-top: 20px; color: black;border-color: black; font-size: small;">
+                        <tr>
+                            <th style="width:150px; height: 20px;">Title </th>
+                            <td> : {{i.title}} </td>
+                        </tr>
+                        <tr>
+                            <th style="width:150px; height: 20px;">Description </th>
+                            <td> : {{i.description}} </td>
+                        </tr>
+                        <tr>
+                            <th style="width:150px; height: 20px;">Total Minutes </th>
+                            <td> : {{i.totalMinutes}} </td>
+                        </tr>
+                        <tr>
+                            <th style="width:150px; height: 20px;">Priority </th>
+                            <td> : {{i.priority}} </td>
+                        </tr>
+                        <tr>
+                            <th style="width:150px; height: 20px;">Status</th>
+                            <td> : {{i.status}} </td>
+                        </tr>
+
+                        <tr>
+                            <th style="width:150px; height: 20px;">User Information</th>
+                            <td >
+                            :
+                            {% for j in  user %}
+                            {% if i.id == j.task_id  %}
+                            
+                            {{j.user.username}},  &nbsp;
+                            {% endif %}
+                            {% endfor %}
+                            </td>
+                        </tr>
+                        <tr rowspan=2>
+                            <td>
+                                <a href="{% url 'taskupdate' i.id %}"><input type="button" class="btn btn-sm btn-dark" style="margin: 10px;" value="Update"></a>
+                                <a  href="{% url 'taskdelete' i.id %}"><input type="button" class="btn btn-sm btn-danger"  value="Delete"></a>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+
+                {% endfor %}
+
+                  
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>
+
+
+                
+ {% endblock content %}  
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

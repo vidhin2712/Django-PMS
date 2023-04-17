@@ -1,0 +1,35 @@
+{% extends '../base.html' %}
+
+
+{% block navbar %}
+    {% include "../navbar.html" %}
+{% endblock navbar %}
+
+ {% block content %} 
+ <div class="container h5" style="margin-top: 5rem ;  background: url(/static/assets/images/cool-background1.png); background-size: cover; border-radius: 50px;">
+    <div class="row d-flex justify-content-center align-items-center h-100 ">
+      <div class="col-lg-13 col-xl-10">
+        <div class="card text-black" style="padding:20px; margin-top:70px; background: rgba(255,255,255,0.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25);">
+          <div class="card-body p-md-5">
+            <div  class="row" style="margin-left: 2rem ; margin-top: 1rem;">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <label style="margin-left: 5px;">Select Project</label>
+                    {{form.project}} 
+
+                    <label style="margin-left: 5px;">Slect User</label>
+                    {{form.user}} 
+                    <input type="submit" class="btn btn-primary" value="submit" style="margin-bottom: 20px;">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}  
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

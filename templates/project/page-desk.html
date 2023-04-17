@@ -1,0 +1,245 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block navbar %}
+    {% include '../navbar.html' %}
+{% endblock navbar %}
+
+
+{% block content %}    
+    <div class="content-page">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content">
+                            <h5>Desk</h5>
+                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="dropdown status-dropdown mr-3">
+                                    <div class="dropdown-toggle" id="dropdownMenuButton03" data-toggle="dropdown">
+                                    <div class="btn bg-body"><span class="h6">Status :</span> In Progress<i class="ri-arrow-down-s-line ml-2 mr-0"></i></div>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton03">
+                                        <a class="dropdown-item" href="#"><i class="ri-mic-line mr-2"></i>In Progress</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-attachment-line mr-2"></i>Priority</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-file-copy-line mr-2"></i>Category</a> 
+                                    </div>
+                                </div>
+                                <div class="list-grid-toggle d-flex align-items-center mr-3">
+                                    <div data-toggle-extra="tab" data-target-extra="#grid" class="active">
+                                        <div class="grid-icon mr-3">
+                                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div data-toggle-extra="tab" data-target-extra="#list">
+                                        <div class="grid-icon">
+                                            <svg  width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pl-3 btn-new border-left">
+                                    <a href="{% url 'taskcreate' %}" class="btn btn-primary">Add Task</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="grid" class="item-content animate__animated animate__fadeIn active" data-toggle-extra="tab-content">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card-transparent mb-0 desk-info">
+                        <div class="card-body p-0">                           
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">                           
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h5>Open Projects  ( 05 )</h5>
+                                                <div class="dropdown">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                
+                                {% for i in alltask %}
+                                    <div class="card">
+                                        <div class="card-body"> 
+                                            <h5 class="mb-3"> {{i}} </h5>
+                                            <p class="mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                                                <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                                                <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                                                <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                                              </svg> {{i.totalMinutes}} </p>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="iq-media-group">
+                                                    {{i.status}}
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="btn bg-secondary-light"> {{i.priority}} </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-transparent mb-0 desk-info">
+                        <div class="card-body p-0">                           
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">                           
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h5>In Progress ( 03 )</h5>
+                                                <div class="dropdown">
+                                                    <span class="dropdown-toggle py-2" id="dropdownMenuButton05" data-toggle="dropdown">
+                                                    <i class="ri-more-fill"></i>
+                                                    </span>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton05">
+                                                        <a class="dropdown-item" href="#"><i class="ri-file-copy-2-line mr-2"></i>Duplicate</a>
+                                                        <a class="dropdown-item" href="#"><i class="ri-edit-2-line mr-2"></i>Rename</a>
+                                                        <a class="dropdown-item" href="#"><i class="ri-delete-bin-5-line mr-2"></i>Delete</a> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    {% for j in alltask  %}
+                                    <div class="card">
+                                        <div class="card-body"> 
+                                            <h5 class="mb-3">{{j}} </h5>
+                                            <p class="mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                                                <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                                                <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                                                <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                                              </svg> {{j.totalMinutes}} </p>
+                                              <div class="m-2">
+                                                {{j.description}}
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="iq-media-group">
+                                                    {{j.status}}
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="btn bg-success-light">{{j.priority}} </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-transparent mb-0 desk-info">
+                        <div class="card-body p-0">                           
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">                           
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h5>Compeleted ( 05 )</h5>
+                                                <div class="dropdown">
+                                                    <span class="dropdown-toggle py-2" id="dropdownMenuButton06" data-toggle="dropdown">
+                                                    <i class="ri-more-fill"></i>
+                                                    </span>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton06">
+                                                        <a class="dropdown-item" href="#"><i class="ri-file-copy-2-line mr-2"></i>Duplicate</a>
+                                                        <a class="dropdown-item" href="#"><i class="ri-edit-2-line mr-2"></i>Rename</a>
+                                                        <a class="dropdown-item" href="#"><i class="ri-delete-bin-5-line mr-2"></i>Delete</a> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body"> 
+                                            <h5 class="mb-3">Login screen updated in mobile </h5>
+                                            <p class="mb-3"><i class="las la-calendar-check mr-2"></i>02 / 02 / 2021</p>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="iq-media-group">
+                                                    <a href="#" class="iq-media">
+                                                        <img src="/static/assets/images/user/01.jpg" class="img-fluid avatar-40 rounded-circle" alt="">
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="btn bg-secondary-light">Design</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="list" class="item-content animate__animated animate__fadeIn" data-toggle-extra="tab-content">
+            <div class="table-responsive rounded bg-white mb-4">
+                <table class="table mb-0 table-borderless tbl-server-info tble-min-width">
+                    <tbody>
+                        <tr>
+                            <td>Hotel Management App UI Kit</td>
+                            <td class="w-25">
+                                <div class="iq-progress-bar bg-secondary-light">
+                                    <span class="bg-secondary iq-progress progress-1" data-percent="65"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="mb-0"><i class="las la-calendar-check mr-2"></i>02 / 02 / 2021</p>
+                            </td>
+                            <td>
+                                <div class="iq-media-group">
+                                    <a href="#" class="iq-media">
+                                        <img class="img-fluid avatar-40 rounded-circle" src="/static/assets/images/user/01.jpg" alt="">
+                                    </a>
+                                    <a href="#" class="iq-media">
+                                        <img class="img-fluid avatar-40 rounded-circle" src="/static/assets/images/user/02.jpg" alt="">
+                                    </a>
+                                    <a href="#" class="iq-media">
+                                        <img class="img-fluid avatar-40 rounded-circle" src="/static/assets/images/user/03.jpg" alt="">
+                                    </a>
+                                    <a href="#" class="iq-media">
+                                        <img class="img-fluid avatar-40 rounded-circle" src="/static/assets/images/user/04.jpg" alt="">
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                               <a href="#" class="btn bg-secondary-light">Design</a>
+                            </td>
+                        </tr>
+                       </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+      </div>
+    </div>
+    <!-- Wrapper End-->
+
+    {% endblock content %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}

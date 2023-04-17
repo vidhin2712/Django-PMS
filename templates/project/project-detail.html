@@ -1,0 +1,100 @@
+{% extends '../base.html' %}
+
+
+{% block navbar %}
+{% include "../navbar.html" %}
+{% endblock navbar %}
+
+ {% block content %} 
+ <div class="container h5" style="margin-top: 5rem;  background: url(/static/assets/images/cool-background3.png); background-size: cover; border-radius : 50px">
+    <div class="row d-flex justify-content-center align-items-center h-100 ">
+      <div class="col-lg-13 col-xl-10">
+        <div class="card text-black" style="border-radius: 50px; margin: 30px; background: rgba(40,184,133,0.5);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(40,184,133,0.25);">
+          <div class="card-body p-md-5">
+            <div  class="row" style="margin-left: 2rem ; margin-top: 1rem;">
+                    <table style=" justify-content: center; width: 100%; margin: 10px; color: black; border-color: black;">
+                        <tr>
+                            <td class="text-center" style="font-size: xx-large; padding: 20px 0 50px;" colspan="4">Project Details</td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Title </td>
+                            <td > : {{project.title}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Description </td>
+                            <td> : {{project.description}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Estimated Hours </td>
+                            <td> : {{project.estimatedHours}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Starting Date </td>
+                            <td> : {{project.startDate}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Due Date</td>
+                            <td> : {{project.completionDate}} </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding: 10px;">Technologies</td>
+                            <td> : {{project.technology}} </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr rowspan=2>
+                            <td style=" padding: 10px;">
+                                <a href="{% url 'projectupdate' project.id %}"><input type="button" class="btn btn-lg btn-dark" style="margin: 10px;" value="Edit"></a>
+                                <a href="{% url 'projectdelete' project.id %}"><input type="button" class="btn btn-lg btn-danger" value="Delete"></a>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-13 col-xl-10">
+        <div class="card text-black" style="border-radius: 50px; margin: 30px; background: rgba(40,184,133,0.5);
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+        border: 1px solid rgba(40,184,133,0.25);">
+          <div class="card-body p-md-5">
+            <div  class="row" style="margin-left: 2rem ; margin-top: -4rem; margin-left: -2rem;">
+                <table class="text-white m-5"  style=" width: 100%; padding: 20px;">
+                    <tr>
+                        <th colspan="2" style="display: flex; justify-content: center; margin: 20px; padding: 10px;font-size: xx-large;"> Modules </th>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if module %}
+                            {% for i in module %}
+
+                        <a href="{% url  'projectmoduledetail' i.id %}"><button class="button-56" role="button" style="margin: 10px 20px 10px 0; display: inline-block;"> {{i}} </button></a>
+
+   
+                            {% endfor %}
+                            {% endif %}
+
+                        </td>
+                    
+                </tr>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+                
+ {% endblock content %}  
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}

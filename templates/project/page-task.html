@@ -1,0 +1,90 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block navbar %}
+    {% include '../navbar.html' %}
+{% endblock navbar %}
+
+
+{% block content %}
+
+        <div class="content-page">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content">
+                            <h5>Your Task</h5>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div class="dropdown dropdown-project mr-3">
+                                    <div class="dropdown-toggle" id="dropdownMenuButton03" data-toggle="dropdown">
+                                    <div class="btn bg-body"><span class="h6">Project :</span> webkit Project<i class="ri-arrow-down-s-line ml-2 mr-0"></i></div>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton03">
+                                        <a class="dropdown-item" href="#"><i class="ri-mic-line mr-2"></i>In Progress</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-attachment-line mr-2"></i>Priority</a>
+                                        <a class="dropdown-item" href="#"><i class="ri-file-copy-line mr-2"></i>Category</a> 
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary" data-target="#new-task-modal" data-toggle="modal">New Task</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        {% for i in taskuser %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card card-widget task-card">
+                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px inset; border: 50%">
+                                        <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="custom-control custom-task custom-checkbox custom-control-inline">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck01">
+                                                    <label class="custom-control-label" for="customCheck01"></label>
+                                                </div>
+                                                <div>
+                                                    <h5 class="mb-2"> {{i.task}} </h5>
+                                                    <div class="media align-items-center">
+                                                        <div class="btn bg-body mr-3"><i class="ri-align-justify mr-2"></i> {{i.task.startDate}} </div>
+                                                        <div class="btn bg-body"><i class="ri-survey-line mr-2"></i> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="media align-items-center mt-md-0 mt-3">
+                                                <h5>Developer: &nbsp; </h5>
+                                                <a href="#" class="btn bg-secondary-light mr-3"> {{i.user}} </a>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>    
+                                {% endfor %}  
+     
+                                                                                      
+        <!-- Page end  -->
+    </div>
+      </div>
+    </div>
+    <!-- Wrapper End-->
+
+    <!-- Modal list start -->
+    <div class="modal fade" role="dialog" aria-modal="true" id="new-project-modal">
+        <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center pb-3 border-bttom">
+                    <h3 class="modal-title" id="exampleModalCenterTitle01">New Project</h3>
+                </div>
+            </div>
+            </div>
+    </div>
+    {% endblock content %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock footer %}
+
